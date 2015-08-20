@@ -23,6 +23,12 @@ p {
   color: #26a69a;
 }
 
+.card-title {
+  display: block;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 100;
+}
+
 
 .parallax-container {
   min-height: 380px;
