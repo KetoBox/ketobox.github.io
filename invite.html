@@ -37,7 +37,7 @@
   </nav>
   <br>
   <div class="container">
-    <div class="card-panel text-lighten-2">
+    <div class="text-lighten-2">
       <h4 class="heading-text teal-text">Request Invite</h4>
      <div class="row">
     <form class="col s12">
@@ -54,7 +54,19 @@
         </div>
       </div>
       <div class="row">
-        <button class="waves-effect waves-light btn" on-click="save()">Submit</button>
+        <div class="input-field col s12 m6">
+          <input id="cweight" type="number" class="validate">
+          <label for="cweight">Current Weight (in Kgs)</label>
+        </div>
+         <div class="input-field col s12 m6">
+          <input id="gweight" type="number" class="validate">
+          <label for="gweight">Goal Weight (in Kgs)</label>
+        </div>
+      </div>
+      <div class="row">
+         <div class="col s12"> 
+        <a class="waves-effect waves-light btn" onclick="save()">Submit</a>
+         </div> 
       </div>
     </form>
   </div>  </div>
@@ -67,8 +79,6 @@
         <div class="col l6 s12">
           <h5 class="white-text">KetoBox</h5>
           <p class="grey-text text-lighten-4">We are experienced Keto followers here to help you succeed at Keto diet. If you are looking for weight loss, without resorting to shortcuts & scams, this is the right place to be.</p>
-
-
         </div>
         <div class="col l3 s12">
           <h5 class="white-text">More..</h5>
@@ -82,7 +92,7 @@
         <div class="col l3 s12">
           <h5 class="white-text">Connect with us</h5>
           <ul>
-            <li><a class="white-text" href="#!">Our Blog</a></li>
+            <li><a class="white-text" href="https://blog.ketobox.in">Our Blog</a></li>
             <li><a class="white-text" href="#!">Facebook</a></li>
             <li><a class="white-text" href="#!">Twitter</a></li>
             <li><a class="white-text" href="#!">Instagram</a></li>
@@ -99,10 +109,13 @@
   </footer>
   <script>
     var users = new Firebase('https://popping-heat-9160.firebaseIO.com/users');
-    var save = function () {
+    function save() {
       var name = $("#name").val();
       var email = $("#email").val();
-      var newUser = users.push({name: name, email: email});
+      var cweight = $("#cweight").val();
+      var gweight = $("#gweight").val();
+      var newUser = users.push({name: name, email: email, cweight: cweight, gweight: gweight});
+      Materialize.toast('Thank you! Now just wait for your personalized plan.', 4000)
       console.log(newUser);
     }
   </script>
